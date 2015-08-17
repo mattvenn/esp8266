@@ -4,7 +4,7 @@ shortlink is http://ven.nz/esp-workshop
 
 # Install the ESP8266 core
 
-We need the ESP8266 core to let us build our own firmwares.
+We need the ESP8266 core to let us build our own firmwares. [Documentation for additional functionality is here](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md)
 
 ## Instructions
 

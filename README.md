@@ -11,6 +11,7 @@
 
 ## Notes
 
-[My notes & links](notes.md)
+* [notes](notes.md)
+* [links](links.md) including official docs
 
 
