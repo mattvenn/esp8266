@@ -67,19 +67,24 @@ Used miniterm (but arduino serial and screen work too)
     miniterm.py /dev/ttyUSB0 115200
 
 ### list available networks
-AT+CWMODE=3
-AT+CWLAP
+
+    AT+CWMODE=3
+    AT+CWLAP
 
 ### join & print details
-AT+CWJAP="MRB2015","9639045620"
-AT+CIFSR
+
+    AT+CWJAP="MRB2015","9639045620"
+    AT+CIFSR
 
 ### multi connections allowed, and listen on 8000
-AT+CIPMUX=1
-AT+CIPSERVER=1,8000
+
+    AT+CIPMUX=1
+    AT+CIPSERVER=1,8000
 
 ### send 8 chars
-AT+CIPSEND=0,8
+
+    AT+CIPSEND=0,8
 
 ### connect to mattvenn.net on 40000
-AT+CIPSTART=4,"TCP","77.73.6.229",40000
+
+    AT+CIPSTART=4,"TCP","77.73.6.229",40000
