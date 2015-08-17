@@ -1,41 +1,108 @@
-# esp8266 notes
+# ESP8266 notes
 
-## Uploading new firmware
+## Writing new firmware with Arduino
 
-Followed this guide from [makezine](http://makezine.com/2015/04/01/installing-building-arduino-sketch-5-microcontroller/)
+* [install instructions here](https://github.com/esp8266/Arduino#installing-with-boards-manager)
 
-* download arduino ide extension: https://github.com/esp8266/Arduino/releases
-* install into ~/sketchbook/hardware/esp8266
-* select generic esp8266 as board in the ide
+Necessary to pulldown gpio0 to gnd before uploading
 
-Necessary to pulldown gpio0 to gnd before uploading, and I needed to pull power before uploading a new sketch.
+## Standalone mode (with switch inaccessible)
 
-I connected led to GPIO2 and used pin 2 to flash it with blink. Works!
+When installed into a project, the button that puts the ESP into upload mode is
+not available.
 
-Sketch will start running immediately, but if power is pulled, will be wiped. So disconnect gpio0 to gnd before removing power.
+[Sparkfun's
+Thing](https://cdn.sparkfun.com/datasheets/Wireless/WiFi/SparkFun_ESP8266_Thing.pdf)
+uses a diode between DTR and gpio0 so that when programming the pin goes low. I
+couldn't get it to work.
 
-I also tested the sparkfun client demo, by setting up a [data stream](https://data.sparkfun.com/streams/o8oj3Z4ZD0t5NmG5zpmn). [JSON key file](keys.json).
+## Low power
+
+[Good writeup by Sparkfun](https://www.sparkfun.com/news/1842)
+
+* arduino lib [supports this](https://github.com/esp8266/Arduino/blob/c6e2a290d1ec945c93b7571df166f0c83e1a6b49/hardware/esp8266com/esp8266/doc/reference.md#esp-specific-apis)
+* gpio16 tied to reset to wakeup
+
+With reg connected couldn't get lower than 5mA. disconnected reg got 80ma for connect/send and 18uA for deep sleep. 
+
+18ua higher(? check this) than expected due to added resistors? eg on reset pin
+
+Can't upload with gpio16 connected to reset. worked with a power cycle
+
+## Boot modes
+
+[This](http://www.esp8266.com/viewtopic.php?f=13&t=1730) explains that gpio0 & 2
+both need to be high (or floating) for a normal boot. So with a sensor like the
+dust sensor connected on gpio2, it will often not boot.
+
+
+## Sparkfun data logging
+
+Tested the (arduino) sparkfun client demo (wificlient), by setting up a [data stream](https://data.sparkfun.com/streams/o8oj3Z4ZD0t5NmG5zpmn).
 
 Followed [this example](http://phant.io/graphing/google/2014/07/07/graphing-data/) to create an [html graph](graph.html)
 
-## Setup and first testing: Wed Jun 24 19:30:07 BST 2015
+## Other ESPs
 
-Modules arrived today. Started with simple AT serial testing.
+2 GPIO pins is pretty limiting, so apart from very simple projects, the esp8266
+would require another microcontroller.
 
-Module [needs up to 200ma](http://wiki.iteadstudio.com/ESP8266_Serial_WIFI_Module)
+There are [more
+though](http://l0l.org.uk/2014/12/esp8266-modules-hardware-guide-gotta-catch-em-all/),
+including the [esp03](http://esp8266.co.uk/modules/esp-03/) which has 7gpios
+plus serial. 4 of the gpios can be used for SPI master.
 
-Used rfduino programmer socket as at 3.3v and can provide up to 500mA.
+I've ended up using the esp12 which seems to have the best capabilities.
 
-Followed a useful [guide from rancidbacon.com](http://rancidbacon.com/files/kiwicon8/ESP8266_WiFi_Module_Quick_Start_Guide_v_1.0.4.pdf)
+## Uploading any firmware
 
-Did the wiring as shown in the doc. Didn't explain CH_PD, but [this pinout did](http://www.espruino.com/ESP8266). Needs to be wired to +3.3v to enable wifi.
+Use [esptool](https://github.com/themadinventor/esptool), for example to load AT firmware:
 
-Didn't use screen as couldn't get \n\r to work so used
+./esptool.py --port /dev/ttyUSB1 --baud 921600 write_flash 0x00000 v0.9.2.2\ AT\ Firmware.bin
+
+## AT commands (using AT firmware)
+
+Used miniterm (but arduino serial and screen work too)
 
     miniterm.py /dev/ttyUSB0 115200
 
-Tested the AT commands, listed, joined wifi networks. Ran TCPserver and connected with nc.
+#list available
+AT+CWMODE=3
+AT+CWLAP
 
-## 19 Jun - bought modules
+#join & print details
+AT+CWJAP="MRB2015","9639045620"
+AT+CIFSR
 
-£7 for 2 from ebay. Etang shop.
+#multi connects and listen on 8000
+AT+CIPMUX=1
+AT+CIPSERVER=1,8000
+
+#send 8 chars
+AT+CIPSEND=0,8
+
+#connect to mattvenn.net on 40000
+AT+CIPSTART=4,"TCP","77.73.6.229",40000
+
+## Official(ish) docs
+
+* [module application guide](http://microchip.ua/esp8266/ESP8266_Module%20Application%20Design%20Guide.pdf)
+* [hardware user guide](http://doc.switch-science.com/datasheets/0B-ESP8266__Hardware_User_Guide__EN_v1.1.pdf)
+* [datasheet](https://www.adafruit.com/images/product-files/2471/0A-ESP8266__Datasheet__EN_v4.3.pdf)
+* [sdk api](http://www.mikrocontroller.net/attachment/245197/2C-SDK-Espressif_IoT_SDK_Programming_Guide_v0.9.5.pdf)
+* [firmware](http://bbs.espressif.com/download/file.php?id=84)
+* [datasheet](http://www.mikrocontroller.net/attachment/231858/0A-ESP8266_Specifications_v4.pdf)
+
+## Useful links
+
+* Followed a useful [guide to get started with AT commands from rancidbacon.com](http://rancidbacon.com/files/kiwicon8/ESP8266_WiFi_Module_Quick_Start_Guide_v_1.0.4.pdf)
+* [CH_PD pin explained](http://www.espruino.com/ESP8266). Needs to be wired to +3.3v to enable wifi.
+* long uptime http://internetofhomethings.com/homethings/?p=631 & http://internetofhomethings.com/homethings/?p=396
+* [the other chip is flash memory](http://nerdralph.blogspot.co.uk/2015/03/esp8266-spi-flash-performance.html)
+* [boot mode on wiki](https://github.com/esp8266/esp8266-wiki/wiki/Boot-Process)
+* [mqtt - unrelated](http://www.hivemq.com/mqtt-essentials-wrap-up/)
+* [spi](http://d.av.id.au/blog/esp8266-hardware-spi-hspi-general-info-and-pinout/)
+* [good overview](https://en.wikipedia.org/wiki/ESP8266)
+* [tech overview](https://nurdspace.nl/ESP8266)
+* [nice sparkfun arduino guide](https://learn.sparkfun.com/tutorials/esp8266-thing-hookup-guide/using-the-arduino-addon)
+* [graphic](https://magic.piktochart.com/output/7040756-introducing-esp8266)
