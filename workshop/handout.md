@@ -1,3 +1,7 @@
+# Workshop handout
+
+shortlink is http://ven.nz/esp-workshop
+
 # Install the ESP8266 core
 
 We need the ESP8266 core to let us build our own firmwares.
@@ -36,10 +40,10 @@ We'll install a pair of libraries that add [REST](http://arest.io/) functionalit
 
 ## Instructions
 
-Install 2 libraries:
+[Install the libraries](https://www.arduino.cc/en/Guide/Libraries#toc4):
 
-* [aREST_UI](https://github.com/marcoschwartz/aREST_UI)
-* [aREST](https://github.com/marcoschwartz/aREST)
+* [aREST_UI](https://github.com/marcoschwartz/aREST_UI/archive/master.zip)
+* [aREST](https://github.com/marcoschwartz/aREST/archive/master.zip)
 
 Load example aREST UI->ESP8266
 
