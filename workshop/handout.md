@@ -1,6 +1,6 @@
 # Workshop handout
 
-shortlink is http://ven.nz/esp-workshop
+shortlink for this page is http://ven.nz/esp-workshop
 
 # Install the ESP8266 core
 
