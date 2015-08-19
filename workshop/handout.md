@@ -33,6 +33,7 @@ Press the Upload button and also press the button on the ESP8266 board
 
 * Flash a more complicated pattern
 * Add a button
+* Use the ADC (max voltage 1v)
 
 # Remote controlled blink
 
@@ -90,4 +91,15 @@ Open serial port and watch as data is posted.
 
 * log button clicks or a temperature sensor
 * [Graph the data](http://phant.io/graphing/google/2014/07/07/graphing-data/) with google charts.
+
+# Deep Sleep
+
+In deep sleep, the ESP can use 18uA or less. GPIO16 needs to be connected to
+reset. My breakout board uses more than that because of the regulator.
+
+## Instructions
+
+To put the ESP to deepsleep mode:
+
+    [ESP.deepSleep(microseconds, mode)](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md#esp-specific-apis)
 
