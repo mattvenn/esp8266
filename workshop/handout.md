@@ -10,17 +10,46 @@ We need the ESP8266 core to let us build our own firmwares. [Documentation for a
 
 [Follow the instructions here](https://github.com/esp8266/Arduino#installing-with-boards-manager)
 
+# AT experimentation
+
+The first ESP boards were used just as a WIFI interface for a microcontroller.
+Similar to GPS or GSM modules, AT commands are used for configuring the ESP.
+
+## Instructions
+
+Build the circuit shown below:
+
+* LED +ve to pin 04
+* LED -ve via resistor to ground
+* The USB 5v line is connected to the regulator as the FTDI chip's 3.3v regulator is not powerful enough for the ESP8266.
+
+![led](led.png)
+
+In the Arduino IDE, choose the serial monitor and try the following
+
+### list available networks
+
+    AT+CWMODE=3
+    AT+CWLAP
+
+### join & print details
+
+    AT+CWJAP="SSID","PASSWORD"
+    AT+CIFSR
+
+### connect to mattvenn.net on 40000
+
+    AT+CIPSTART=4,"TCP","77.73.6.229",40000
+
 # Blink
 
 The 'hello world' of loading our own firmware. We'll use a simple example program to flash an LED connected to the ESP8266.
 
 ## Instructions
 
-Build the circuit shown below
+Load the blink example sketch and change all references to pin 13 to pin 5.
 
-![led](led.png)
-
-Load the blink example sketch and change all references to pin 13 to pin 2
+The LED is connected to pin 4 because the ESP-12 module swapped pins 4 & 5 after the PCBs were designed.
 
 In the Arduino IDE, set:
 
@@ -49,8 +78,6 @@ We'll install a pair of libraries that add [REST](http://arest.io/) functionalit
 Load example aREST UI->ESP8266
 
 Change WIFI parameters (SSID & Password)
-
-Change reference to pin 5 (line 36) to pin 2.
 
 Upload (press button on PCB as well)
 
