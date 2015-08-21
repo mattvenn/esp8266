@@ -1,6 +1,6 @@
 # Documentacion del taller
 
-link para esta documentacion es http://ven.nz/esp-workshop
+link para esta documentacion es http://ven.nz/esp-taller
 
 # Instalar el ESP8266 core
 
