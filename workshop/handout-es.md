@@ -70,69 +70,74 @@ Pulsar el boton 'Upload' y a la vez pulsar el boton en la placa.
 * Añade un buton
 * Utiliza el ADC (voltaje maximo 1v)
 
-# Remote controlled blink
+# Parapadear de WIFI
 
-We'll install a pair of libraries that add [REST](http://arest.io/) functionality to the ESP8266. Then we'll use a browser or a phone to control the LED we connected earlier.
+Ahora instalamos dos librarios que tienen functionalidad
+[REST](http://arest.io/). Despues puedamos util un browser para parapadear el
+LED.
 
-## Instructions
+## Instrucciones
 
-[Install the libraries](https://www.arduino.cc/en/Guide/Libraries#toc4):
+[Instalar los dos librarios](https://www.arduino.cc/en/Guide/Libraries#toc4):
 
 * [aREST_UI](https://github.com/marcoschwartz/aREST_UI/archive/master.zip)
 * [aREST](https://github.com/marcoschwartz/aREST/archive/master.zip)
 
-Load example aREST UI->ESP8266
+Cargar el ejemplo aREST UI->ESP8266
 
-Change WIFI parameters (SSID & Password)
+Cambia los paramateros WIFI (SSID & Secreto)
 
-Upload (press button on PCB as well)
+Pulsar el boton 'Upload' y a la vez pulsar el boton en la placa.
 
-Open serial port and make a note of the IP address
+Activa el monitor serial y buscar para el address IP
 
-Navigate to the IP address using a web browser
+En tu browser, vas el IP
 
-Control the LED by clicking the buttons
+Control el LED para pulsar los botones
 
-## Advanced tasks
+## Tareas advanzados
 
-* Add an extra LED
-* Use the slider control to control LED brightness
+* Añadir un otre LED
+* Util el control deslizadoro para brillo LED
 
-# Data logging with Sparkfun
+# Dregistro de datos con Sparkfun
 
-Now we'll look at logging data to a remote data store. To start with we'll just log how long the ESP8266 has been running.
+Ahora enviamos datos para WIFI. Empazamos solo enviar el ESP8266 tiempo desde
+reset. Sparkfun tiene un servicio libro se llama Phant.
 
-## Instructions
+## Instrucciones
 
-Navigate to [data.sparkfun.com](https://data.sparkfun.com/streams/make)
+Vas a [data.sparkfun.com](https://data.sparkfun.com/streams/make)
 
-Fill in the blanks (use 'value' for fields)
+Llenar los espacios en blanco (para el espacio 'fields', util 'value')
 
-Press 'save' and download the keys as a json file
+Pulsar 'save' y guardar los llaves entre el archivo JSON
 
-In Arduino IDE, load example ESP8266Wifi->WifiClient
+En Arduino IDE, cargar el ejemplo ESP8266Wifi->WifiClient
 
-Change WIFI parameters (SSID & Password)
+Cambia los paramateros WIFI (SSID & Secreto)
 
-Change streamId & privateKey to your details (in the json file)
+Cambiar streamId & privateKey a tus llaves (en el archivo JSON)
 
-Upload (press button on PCB as well)
+Pulsar el boton 'Upload' y a la vez pulsar el boton en la placa.
 
-Open serial port and watch as data is posted.
+Activa el monitor serial y mirar datas enviar.
 
-## Advanced tasks
+## Tareas advanzados
 
-* log button clicks or a temperature sensor
-* [Graph the data](http://phant.io/graphing/google/2014/07/07/graphing-data/) with google charts.
+* util un boton o un sensor temperatura
+* [Hacer un gráfico](http://phant.io/graphing/google/2014/07/07/graphing-data/)
+ con gráficos de google.
 
-# Deep Sleep
+# Reposo
 
-In deep sleep, the ESP can use 18uA or less. GPIO16 needs to be connected to
-reset. My breakout board uses more than that because of the regulator.
+En reposo, es possible consumo menos de 18uA. Necessitas conectar GPIO16 a reset
+La placa utilamos hoy consumo mas porque el regulador.
 
-## Instructions
+## Instrucciones
 
-To put the ESP to deepsleep mode:
+Hacer modo reposo:
 
     [ESP.deepSleep(microseconds, mode)](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md#esp-specific-apis)
 
+Duespes despierta, el programa empezar en el partir de abrir.
