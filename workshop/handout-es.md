@@ -4,8 +4,8 @@ link para esta documentacion es http://ven.nz/esp-taller
 
 # Instalar el ESP8266 core
 
-Necesitamos el ESP8266 core para construir neustros firmwares. [Documentacion
-para functionalidad](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md)
+Necesitamos el ESP8266 core para construir nuestros firmwares. 
+[Documentacion para functionalidad](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md)
 
 ## Instrucciones
 
@@ -16,7 +16,7 @@ para functionalidad](https://github.com/esp8266/Arduino/blob/esp8266/hardware/es
 Los primeras placas ESP fueron usadas solo para interace WIFI con un
 microcontolador.
 
-Para configurar el ESP, se usan commandos AT de forma similar para a los modulos
+Para configurar el ESP, se usan commandos AT de forma similar a los modulos
 GPS o GSM.
 
 ## Instrucciones
@@ -50,7 +50,7 @@ En el IDE Arduino, activa el monitor serial y proba los commandos de abajo:
 
 El programa el 'hola mundo'. Programaremos un ejemplo para parapadear un LED connectado con el ESP8266.
 
-## Instructions
+## Instrucciones
 
 Cargar el ejemplo blink y cambia todos las referencias al pin 13 a pin 5.
 
@@ -64,13 +64,13 @@ En el IDE Arduino, cambia:
 
 Pulsar el boton 'Upload' y a la vez pulsar el boton en la placa.
 
-## Tareas advanzados
+## Tareas advanzadas
 
 * Parapadear una sequencia mas complicado
-* Añade un buton
+* Añade un botón
 * Utiliza el ADC (voltaje maximo 1v)
 
-# Parapadear de WIFI
+# Parapadear por WIFI
 
 Ahora instalamos dos librarios que tienen functionalidad
 [REST](http://arest.io/). Despues puedamos util un browser para parapadear el
@@ -78,66 +78,66 @@ LED.
 
 ## Instrucciones
 
-[Instalar los dos librarios](https://www.arduino.cc/en/Guide/Libraries#toc4):
+[Instalar las dos librerias](https://www.arduino.cc/en/Guide/Libraries#toc4):
 
 * [aREST_UI](https://github.com/marcoschwartz/aREST_UI/archive/master.zip)
 * [aREST](https://github.com/marcoschwartz/aREST/archive/master.zip)
 
 Cargar el ejemplo aREST UI->ESP8266
 
-Cambia los paramateros WIFI (SSID & Secreto)
+Cambia los paramateros WIFI (SSID & password)
 
 Pulsar el boton 'Upload' y a la vez pulsar el boton en la placa.
 
 Activa el monitor serial y buscar para el address IP
 
-En tu browser, vas el IP
+En tu navegador, vas a la IP
 
 Control el LED para pulsar los botones
 
-## Tareas advanzados
+## Tareas advanzadas
 
-* Añadir un otre LED
-* Util el control deslizadoro para brillo LED
+* Añadir otro LED
+* Utiliza el control deslizante para regular el brillo del LED
 
-# Dregistro de datos con Sparkfun
+# Registro de datos con Sparkfun
 
-Ahora enviamos datos para WIFI. Empazamos solo enviar el ESP8266 tiempo desde
-reset. Sparkfun tiene un servicio libro se llama Phant.
+Ahora enviaremos datos por WIFI. Empezamos solo enviando tiempo desde
+el reset del ESP8266. Sparkfun tiene un servicio libre, se llama Phant.
 
 ## Instrucciones
 
 Vas a [data.sparkfun.com](https://data.sparkfun.com/streams/make)
 
-Llenar los espacios en blanco (para el espacio 'fields', util 'value')
+Llena los espacios en blanco (para el espacio 'fields', utiliza 'value')
 
-Pulsar 'save' y guardar los llaves entre el archivo JSON
+Pulsa 'save' y guarda el archivo JSON que incluirá tus claves
 
-En Arduino IDE, cargar el ejemplo ESP8266Wifi->WifiClient
+En Arduino IDE, carga el ejemplo ESP8266Wifi->WifiClient
 
-Cambia los paramateros WIFI (SSID & Secreto)
+Cambia los paramateros WIFI (SSID & Pass)
 
-Cambiar streamId & privateKey a tus llaves (en el archivo JSON)
+Cambia streamId & privateKey a tus claves (en el archivo JSON)
 
 Pulsar el boton 'Upload' y a la vez pulsar el boton en la placa.
 
-Activa el monitor serial y mirar datas enviar.
+Activa el monitor serial y mira como se envian los datos.
 
-## Tareas advanzados
+## Tareas advanzadas
 
-* util un boton o un sensor temperatura
+* utiliza un boton o un sensor temperatura
 * [Hacer un gráfico](http://phant.io/graphing/google/2014/07/07/graphing-data/)
  con gráficos de google.
 
 # Reposo
 
-En reposo, es possible consumo menos de 18uA. Necessitas conectar GPIO16 a reset
-La placa utilamos hoy consumo mas porque el regulador.
+En reposo, es possible consumir menos de 18uA. Necesitas conectar GPIO16 a reset
+Mi placa consume un poco mas, debido al regulador.
 
 ## Instrucciones
 
-Hacer modo reposo:
+Como activar modo reposo:
 
     [ESP.deepSleep(microseconds, mode)](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md#esp-specific-apis)
 
-Duespes despierta, el programa empezar en el partir de abrir.
+Despues de despertar, el programa empieza desde el principio.
