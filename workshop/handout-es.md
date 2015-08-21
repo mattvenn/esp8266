@@ -2,6 +2,9 @@
 
 link para esta documentacion es http://ven.nz/esp-taller
 
+el wifi es: YOMAKER
+secreto: yomaker2015vzla
+
 # Instalar el ESP8266 core
 
 Necesitamos el ESP8266 core para construir nuestros firmwares. 
