@@ -47,6 +47,7 @@ En el IDE Arduino, activa el monitor serial y prueba los commandos de abajo:
 
 ### Conectado a mattvenn.net puerto 40000
 
+    AT+CIPMUX=1
     AT+CIPSTART=4,"TCP","77.73.6.229",40000
 
 # Parpadear
