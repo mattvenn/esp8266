@@ -25,21 +25,31 @@ Build the circuit shown below:
 
 ![led](led.png)
 
-In the Arduino IDE, choose the serial monitor and try the following
+In the Arduino IDE, open the serial monitor, set baud=9600 and line ending to
+'both nl & cr'. 
+
+The lines preceded with a # are comments and don't need to be typed in.
+
+A [list of commands is here](https://nurdspace.nl/ESP8266#AT_Commands)
 
 ### list available networks
 
-    AT+CWMODE=3
+    # reset module
+    AT+RST
+    # list available networks
     AT+CWLAP
 
 ### join & print details
 
+    # join a network
     AT+CWJAP="SSID","PASSWORD"
+    # show ip address
     AT+CIFSR
 
 ### connect to mattvenn.net on 40000
 
-    AT+CIPSTART=4,"TCP","77.73.6.229",40000
+    # connect to remote server
+    AT+CIPSTART="TCP","77.73.6.229",40000
 
 # Blink
 
@@ -55,8 +65,12 @@ In the Arduino IDE, set:
 
 * tools->board = generic ESP8266
 * tools->upload speed = 921600
+* tools->port = the correct port on your system
 
 Press the Upload button and also press the button on the ESP8266 board
+
+If you have problems, [this guide can help you get things
+connected](https://www.arduino.cc/en/Guide/HomePage)
 
 ## Advanced tasks
 
@@ -68,12 +82,16 @@ Press the Upload button and also press the button on the ESP8266 board
 
 We'll install a pair of libraries that add [REST](http://arest.io/) functionality to the ESP8266. Then we'll use a browser or a phone to control the LED we connected earlier.
 
+If you replaced the LED with a relay you could remotely control a light, pump,
+heater etc.
+
+
 ## Instructions
 
 [Install the libraries](https://www.arduino.cc/en/Guide/Libraries#toc4):
 
-* [aREST_UI](https://github.com/marcoschwartz/aREST_UI/archive/master.zip)
-* [aREST](https://github.com/marcoschwartz/aREST/archive/master.zip)
+* [aREST_UI library](https://github.com/marcoschwartz/aREST_UI/archive/master.zip), [aREST_UI documentation](https://github.com/marcoschwartz/aREST_UI)
+* [aREST library](https://github.com/marcoschwartz/aREST/archive/master.zip), [aREST documentation](https://github.com/marcoschwartz/aREST)
 
 Load example aREST UI->ESP8266
 
@@ -81,7 +99,7 @@ Change WIFI parameters (SSID & Password)
 
 Upload (press button on PCB as well)
 
-Open serial port and make a note of the IP address
+Open serial port (this time baud should be set to 115200) and make a note of the IP address
 
 Navigate to the IP address using a web browser
 
@@ -108,11 +126,11 @@ In Arduino IDE, load example ESP8266Wifi->WifiClient
 
 Change WIFI parameters (SSID & Password)
 
-Change streamId & privateKey to your details (in the json file)
+Change streamId to your publicKey & privateKey to privateKey (details in the json file)
 
 Upload (press button on PCB as well)
 
-Open serial port and watch as data is posted.
+Open serial port (baud=115200) and watch as data is posted.
 
 ## Advanced tasks
 
@@ -121,8 +139,10 @@ Open serial port and watch as data is posted.
 
 # Deep Sleep
 
-In deep sleep, the ESP can use 18uA or less. GPIO16 needs to be connected to
-reset. My breakout board uses more than that because of the regulator.
+In deep sleep, the ESP can use 18uA or less. My breakout board uses more than that because of the regulator.
+
+GPIO16 needs to be connected to reset. After the timeout, the chip resets
+itself by toggling GPIO16.
 
 ## Instructions
 
