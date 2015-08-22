@@ -65,7 +65,7 @@ In the Arduino IDE, set:
 * tools->upload speed = 921600
 * tools->port = the correct port on your system
 
-Press the Upload button and also press the button on the ESP8266 board
+Press the Upload button and also press the button on the ESP8266 board.
 Loading our new firmware will overwrite the previous AT firmware.
 
 If you have problems, [this guide can help you get things
@@ -80,14 +80,14 @@ connected](https://www.arduino.cc/en/Guide/HomePage)
 
 # Remote controlled blink
 
-We'll install a pair of libraries that add [REST](http://arest.io/) functionality to the ESP8266. Then we'll use a browser or a phone to control the LED we connected earlier.
+We'll install a pair of libraries that add [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) functionality to the ESP8266. Then we'll use a browser or a phone to control the LED we connected earlier.
 
 If you replaced the LED with a relay you could remotely control a light, pump,
 heater etc.
 
 ## Instructions
 
-Install the libraries - if you need help, [check this guide](https://www.arduino.cc/en/Guide/Libraries#toc4):
+Install the following libraries - if you need help, [check this guide](https://www.arduino.cc/en/Guide/Libraries#toc4).
 
 * [aREST_UI library](https://github.com/marcoschwartz/aREST_UI/archive/master.zip), [aREST_UI documentation](https://github.com/marcoschwartz/aREST_UI)
 * [aREST library](https://github.com/marcoschwartz/aREST/archive/master.zip), [aREST documentation](https://github.com/marcoschwartz/aREST)
@@ -140,12 +140,11 @@ Open serial port (baud=115200) and watch as data is posted.
 
 In deep sleep, the ESP can use 18uA or less. My breakout board uses more than that because of the regulator.
 
-GPIO16 needs to be connected to reset. After the timeout, the chip resets
-itself by toggling GPIO16.
-
 ## Instructions
 
-To put the ESP to deepsleep mode:
+Connect GPIO16 to reset. After the timeout, the chip resets itself by toggling GPIO16.
 
-    [ESP.deepSleep(microseconds, mode)](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md#esp-specific-apis)
+Put the ESP to [deepsleep mode](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md#esp-specific-apis):
+
+    ESP.deepSleep(microseconds, mode)
 
