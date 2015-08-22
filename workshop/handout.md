@@ -2,14 +2,6 @@
 
 shortlink for this page is http://ven.nz/esp-workshop
 
-# Install the ESP8266 core
-
-We need the ESP8266 core to let us build our own firmwares. [Documentation for additional functionality is here](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md)
-
-## Instructions
-
-[Follow the instructions here](https://github.com/esp8266/Arduino#installing-with-boards-manager)
-
 # AT experimentation
 
 The first ESP boards were used just as a WIFI interface for a microcontroller.
@@ -57,9 +49,11 @@ A [list of commands is here](https://nurdspace.nl/ESP8266#AT_Commands)
 
 The 'hello world' of loading our own firmware. We'll use a simple example program to flash an LED connected to the ESP8266.
 
-Loading our new firmware will overwrite the previous AT firmware.
+To build our new firmware, we need to add the ESP8266 core to the Arduino IDE.
 
 ## Instructions
+
+Follow [the instructions here to install the ESP core](https://github.com/esp8266/Arduino#installing-with-boards-manager)
 
 Load the blink example sketch and change all references to pin 13 to pin 5.
 
@@ -72,12 +66,14 @@ In the Arduino IDE, set:
 * tools->port = the correct port on your system
 
 Press the Upload button and also press the button on the ESP8266 board
+Loading our new firmware will overwrite the previous AT firmware.
 
 If you have problems, [this guide can help you get things
 connected](https://www.arduino.cc/en/Guide/HomePage)
 
 ## Advanced tasks
 
+* Take a look at the [documentation for the Arduino ESP libraries](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md)
 * Flash a more complicated pattern
 * Add a button
 * Use the ADC (max voltage 1v)
@@ -88,7 +84,6 @@ We'll install a pair of libraries that add [REST](http://arest.io/) functionalit
 
 If you replaced the LED with a relay you could remotely control a light, pump,
 heater etc.
-
 
 ## Instructions
 
