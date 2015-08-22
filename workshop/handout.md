@@ -13,8 +13,8 @@ When you buy a new ESP chip, it will come loaded with the default AT firmware.
 
 Build the circuit shown below:
 
-* LED +ve to pin 04
-* LED -ve via resistor to ground
+* LED +ve (long leg) to pin 04
+* LED -ve (short leg) via resistor to ground
 * The USB 5v line is connected to the regulator as the FTDI chip's 3.3v regulator is not powerful enough for the ESP8266.
 
 ![led](led.png)
