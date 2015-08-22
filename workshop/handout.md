@@ -15,6 +15,8 @@ We need the ESP8266 core to let us build our own firmwares. [Documentation for a
 The first ESP boards were used just as a WIFI interface for a microcontroller.
 Similar to GPS or GSM modules, AT commands are used for configuring the ESP.
 
+When you buy a new ESP chip, it will come loaded with the default AT firmware.
+
 ## Instructions
 
 Build the circuit shown below:
@@ -55,6 +57,8 @@ A [list of commands is here](https://nurdspace.nl/ESP8266#AT_Commands)
 
 The 'hello world' of loading our own firmware. We'll use a simple example program to flash an LED connected to the ESP8266.
 
+Loading our new firmware will overwrite the previous AT firmware.
+
 ## Instructions
 
 Load the blink example sketch and change all references to pin 13 to pin 5.
@@ -88,7 +92,7 @@ heater etc.
 
 ## Instructions
 
-[Install the libraries](https://www.arduino.cc/en/Guide/Libraries#toc4):
+Install the libraries - if you need help, [check this guide](https://www.arduino.cc/en/Guide/Libraries#toc4):
 
 * [aREST_UI library](https://github.com/marcoschwartz/aREST_UI/archive/master.zip), [aREST_UI documentation](https://github.com/marcoschwartz/aREST_UI)
 * [aREST library](https://github.com/marcoschwartz/aREST/archive/master.zip), [aREST documentation](https://github.com/marcoschwartz/aREST)
