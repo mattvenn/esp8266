@@ -140,11 +140,21 @@ Open serial port (baud=115200) and watch as data is posted.
 
 In deep sleep, the ESP can use 18uA or less. My breakout board uses more than that because of the regulator.
 
+## Timeout
+
+Connect GPIO16 to reset and set a time to sleep. After the timeout, the chip resets itself by toggling GPIO16.
+
+## External interrupt
+
+Set the timeout to 0 and it will sleep until the reset line is momentarily pulled low.
+
 ## Instructions
 
-Connect GPIO16 to reset. After the timeout, the chip resets itself by toggling GPIO16.
+Connect GPIO16 to reset. 
 
 Put the ESP to [deepsleep mode](https://github.com/esp8266/Arduino/blob/esp8266/hardware/esp8266com/esp8266/doc/reference.md#esp-specific-apis):
 
     ESP.deepSleep(microseconds, mode)
 
+Check your program sleeps for the desired time, then starts again from the
+beginning.
