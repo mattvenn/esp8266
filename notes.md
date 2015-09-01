@@ -54,6 +54,11 @@ plus serial. 4 of the gpios can be used for SPI master.
 
 I've ended up using the esp12 on [my breakout](https://github.com/mattvenn/kicad/tree/master/esp8266-12-breakout-smt) which seems to have the best capabilities.
 
+ESP12&7 silkscreen pinouts
+[had](https://twitter.com/sej7278/status/559095839579443201) 
+[gpio4&5](http://www.esp8266.com/viewtopic.php?f=18&t=1738)
+[swapped](http://www.esp8266.com/viewtopic.php?f=13&t=1370)
+
 ## Uploading any firmware
 
 Use [esptool](https://github.com/themadinventor/esptool), for example to load AT firmware:
@@ -68,7 +73,7 @@ Used miniterm (but arduino serial and screen work too)
 
 ### list available networks
 
-    AT+CWMODE=3
+    AT+CWMODE=1
     AT+CWLAP
 
 ### join & print details
