@@ -21,6 +21,7 @@ AI-thinker firmware (used in the workshop)
 # Useful links
 
 * Useful [guide to get started with AT commands from rancidbacon.com](http://rancidbacon.com/files/kiwicon8/ESP8266_WiFi_Module_Quick_Start_Guide_v_1.0.4.pdf)
+* [AT commands with examples](http://wiki.iteadstudio.com/ESP8266_Serial_WIFI_Module)
 * [CH_PD pin explained](http://www.espruino.com/ESP8266). Needs to be wired to +3.3v to enable wifi.
 * long uptime http://internetofhomethings.com/homethings/?p=631 & http://internetofhomethings.com/homethings/?p=396
 * [the other chip is flash memory](http://nerdralph.blogspot.co.uk/2015/03/esp8266-spi-flash-performance.html)
