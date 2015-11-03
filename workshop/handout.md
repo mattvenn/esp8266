@@ -40,14 +40,14 @@ A [list of commands is here](https://nurdspace.nl/ESP8266#AT_Commands)
 ### join & print details
 
     # join a network
-    AT+CWJAP="SSID","PASSWORD"
+    AT+CWJAP="hackspace","Altman37"
     # show ip address
     AT+CIFSR
 
-### connect to mattvenn.net on 40000
+### connect to mattvenn.net on 50000
 
     # connect to remote server
-    AT+CIPSTART="TCP","77.73.6.229",40000
+    AT+CIPSTART="TCP","77.73.6.229",50000
 
 # Blink
 
@@ -67,7 +67,8 @@ In the Arduino IDE, set:
 * tools->upload speed = 921600
 * tools->port = the correct port on your system
 
-Press the Upload button and also press the button on the ESP8266 board.
+Press and hold the button on the ESP8266 board, then press the Arduino IDE's upload button. After the upload starts, you can release the button on the board.
+
 Loading our new firmware will overwrite the previous AT firmware.
 
 If you have problems, [this guide can help you get things
