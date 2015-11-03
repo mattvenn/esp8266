@@ -4,8 +4,19 @@
 * [hardware user guide](http://doc.switch-science.com/datasheets/0B-ESP8266__Hardware_User_Guide__EN_v1.1.pdf)
 * [datasheet](https://www.adafruit.com/images/product-files/2471/0A-ESP8266__Datasheet__EN_v4.3.pdf)
 * [sdk api](http://www.mikrocontroller.net/attachment/245197/2C-SDK-Espressif_IoT_SDK_Programming_Guide_v0.9.5.pdf)
-* [firmware](http://bbs.espressif.com/download/file.php?id=84)
 * [datasheet](http://www.mikrocontroller.net/attachment/231858/0A-ESP8266_Specifications_v4.pdf)
+
+# AT firmware
+
+Official firmwares
+
+* [v0.5](http://bbs.espressif.com/download/file.php?id=837)
+* [v0.2](http://bbs.espressif.com/download/file.php?id=84)
+
+AI-thinker firmware (used in the workshop)
+
+* [v0.9.2.2](https://drive.google.com/file/d/0B2uCVSW6X_KGZVR1MUNDTlZ3cFk/view?usp=sharing)
+
 
 # Useful links
 

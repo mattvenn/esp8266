@@ -2,6 +2,8 @@
 
 shortlink for this page is http://ven.nz/esp-workshop
 
+[workshop presentation, repo, notes, links](https://github.com/mattvenn/esp8266)
+
 # AT experimentation
 
 The first ESP boards were used just as a WIFI interface for a microcontroller.
@@ -30,6 +32,8 @@ A [list of commands is here](https://nurdspace.nl/ESP8266#AT_Commands)
 
     # reset module
     AT+RST
+    # put into router mode
+    AT+CWMODE=1
     # list available networks
     AT+CWLAP
 
