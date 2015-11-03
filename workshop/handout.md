@@ -15,7 +15,7 @@ When you buy a new ESP chip, it will come loaded with the default AT firmware.
 
 Build the circuit shown below:
 
-* LED +ve (long leg) to pin 04
+* LED +ve (long leg) to pin 05 (or 04 if your board is v1).
 * LED -ve (short leg) via resistor to ground
 * The USB 5v line is connected to the regulator as the FTDI chip's 3.3v regulator is not powerful enough for the ESP8266.
 
@@ -60,8 +60,6 @@ To build our new firmware, we need to add the ESP8266 core to the Arduino IDE.
 Follow [the instructions here to install the ESP core](https://github.com/esp8266/Arduino#installing-with-boards-manager)
 
 Load the blink example sketch and change all references to pin 13 to pin 5.
-
-The LED is connected to pin 4 because the ESP-12 module swapped pins 4 & 5 after the PCBs were designed.
 
 In the Arduino IDE, set:
 
